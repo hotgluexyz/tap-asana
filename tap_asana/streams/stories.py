@@ -13,6 +13,7 @@ class Stories(Stream):
     "resource_type",
     "created_at",
     "created_by",
+    "created_by.name",
     "resource_subtype",
     "text",
     "html_text",
