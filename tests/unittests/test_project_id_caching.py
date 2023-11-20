@@ -11,14 +11,18 @@ def sections_data(*args, **kwargs):
     return [
         {"gid": 1, "name": "test_data_1"},
         {"gid": 2, "name": "test_data_2"},
-        {"gid": 3, "name": "test_data_3"}]
+        {"gid": 3, "name": "test_data_3"},
+    ]
+
 
 # dummy 'stories' data
 def stories_data(*args, **kwargs):
     return [
         {"gid": 1, "name": "test_data_1", "created_at": "2021-01-01"},
         {"gid": 2, "name": "test_data_2", "created_at": "2021-01-01"},
-        {"gid": 3, "name": "test_data_3", "created_at": "2021-01-01"}]
+        {"gid": 3, "name": "test_data_3", "created_at": "2021-01-01"},
+    ]
+
 
 # mock 'call_api' function
 def mock_call_api(*args, **kwargs):
@@ -29,14 +33,15 @@ def mock_call_api(*args, **kwargs):
     elif args[0] == "projects":
         return [
             {"gid": 1, "name": "test_project_1"},
-            {"gid": 2, "name": "test_project_2"}
+            {"gid": 2, "name": "test_project_2"},
         ]
     # # dummy 'tasks' data
     elif args[0] == "tasks":
         return [
             {"gid": 1, "name": "test_task_1", "modified_at": "2021-01-01"},
-            {"gid": 2, "name": "test_task_2", "modified_at": "2021-01-01"}
+            {"gid": 2, "name": "test_task_2", "modified_at": "2021-01-01"},
         ]
+
 
 @mock.patch("tap_asana.asana.Asana.refresh_access_token")
 @mock.patch("time.sleep")
@@ -46,9 +51,9 @@ class TestProjectIdCaching(unittest.TestCase):
     # verify the working if 'sections' stream after caching Project IDs
     def test_sections(self, mocked_call_api, mocked_sleep, mocked_refresh_access_token):
         # set config file
-        Context.config = {'start_date': '2021-01-01T00:00:00Z'}
+        Context.config = {"start_date": "2021-01-01T00:00:00Z"}
         # Set asana client in Context before test
-        Context.asana = Asana('test', 'test', 'test', 'test', 'test')
+        Context.asana = Asana("test", "test", "test", "test", "test")
         # mock 'call_api' function
         mocked_call_api.side_effect = mock_call_api
         # mock and return 'sections' data
@@ -76,11 +81,18 @@ class TestProjectIdCaching(unittest.TestCase):
     # verify the working if 'tasks' stream after caching Project IDs
     @mock.patch("tap_asana.streams.base.Stream.get_updated_session_bookmark")
     @mock.patch("tap_asana.streams.base.Stream.update_bookmark")
-    def test_tasks(self, mocked_update_bookmark, mocked_get_updated_session_bookmark, mocked_call_api, mocked_sleep, mocked_refresh_access_token):
+    def test_tasks(
+        self,
+        mocked_update_bookmark,
+        mocked_get_updated_session_bookmark,
+        mocked_call_api,
+        mocked_sleep,
+        mocked_refresh_access_token,
+    ):
         # set config file
-        Context.config = {'start_date': '2021-01-01T00:00:00Z'}
+        Context.config = {"start_date": "2021-01-01T00:00:00Z"}
         # Set asana client in Context before test
-        Context.asana = Asana('test', 'test', 'test', 'test', 'test')
+        Context.asana = Asana("test", "test", "test", "test", "test")
         # mock 'call_api' function
         mocked_call_api.side_effect = mock_call_api
 
@@ -105,11 +117,17 @@ class TestProjectIdCaching(unittest.TestCase):
 
     # verify the working if 'stories' stream after caching Project IDs
     @mock.patch("tap_asana.streams.base.Stream.is_bookmark_old")
-    def test_stories(self, mocked_is_bookmark_old, mocked_call_api, mocked_sleep, mocked_refresh_access_token):
+    def test_stories(
+        self,
+        mocked_is_bookmark_old,
+        mocked_call_api,
+        mocked_sleep,
+        mocked_refresh_access_token,
+    ):
         # set config file
-        Context.config = {'start_date': '2021-01-01T00:00:00Z'}
+        Context.config = {"start_date": "2021-01-01T00:00:00Z"}
         # Set asana client in Context before test
-        Context.asana = Asana('test', 'test', 'test', 'test', 'test')
+        Context.asana = Asana("test", "test", "test", "test", "test")
         # mock 'call_api' function
         mocked_call_api.side_effect = mock_call_api
         # mock and return 'stories' data
