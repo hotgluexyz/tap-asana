@@ -1,6 +1,5 @@
-import asana
 import singer
-from tap_asana.client import AsanaClient
+from tap_asana.custom_client import AsanaClient
 
 LOGGER = singer.get_logger()
 

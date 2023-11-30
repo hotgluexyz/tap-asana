@@ -4,7 +4,7 @@ import tap_asana.streams.stories as stories
 import tap_asana.streams.tasks as tasks
 from unittest import mock
 from tap_asana.context import Context
-from tap_asana.asana import Asana
+from tap_asana.asana_ import Asana
 
 # dummy 'sections' data
 def sections_data(*args, **kwargs):
