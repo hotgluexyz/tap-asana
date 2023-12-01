@@ -8,7 +8,7 @@ from tap_asana.streams.stories import Stories
 from tap_asana.streams.teams import Teams
 from unittest import mock
 from tap_asana.context import Context
-from tap_asana.asana import Asana
+from tap_asana.asana_ import Asana
 from tap_asana.streams.base import CollectionPageIterator
 
 # raise requests.Timeout error
@@ -767,7 +767,7 @@ class TestRequestTimeoutBackoff(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         mocked_get.side_effect = raise_Timeout_error  # raise Timeout
 
@@ -785,7 +785,7 @@ class TestRequestTimeoutBackoff(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         iterator_object.continuation = {"offset": "test"}
         mocked_get.side_effect = raise_Timeout_error  # raise Timeout

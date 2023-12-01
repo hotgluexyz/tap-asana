@@ -32,7 +32,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         mocked_get.side_effect = invalid_token_error_raiser  # raise InvalidTokenError
 
@@ -51,7 +51,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         mocked_get.side_effect = (
             no_authorized_error_raiser  # raise NoAuthorizationError
@@ -72,7 +72,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         mocked_get.side_effect = token_expired_error_raiser  # raise TokenExpiredError
 
@@ -92,7 +92,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         mocked_get.side_effect = "data"
 
@@ -111,7 +111,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         iterator_object.continuation = {"offset": "test"}
         mocked_get.side_effect = invalid_token_error_raiser  # raise InvalidTokenError
@@ -131,7 +131,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         iterator_object.continuation = {"offset": "test"}
         mocked_get.side_effect = (
@@ -153,7 +153,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         iterator_object.continuation = {"offset": "test"}
         mocked_get.side_effect = token_expired_error_raiser  # raise TokenExpiredError
@@ -174,7 +174,7 @@ class TestRefreshAccessToken(unittest.TestCase):
         # Set asana client in Context before test
         Context.asana = tap_asana.Asana("test", "test", "test", "test", "test")
         # Set asana CollectionPageIterator object
-        client = tap_asana.asana.asana.client.Client({})
+        client = tap_asana.asana_.asana.client.Client({})
         iterator_object = CollectionPageIterator(client, "test", "test", {})
         iterator_object.continuation = {"offset": "test"}
         mocked_get.side_effect = "data"

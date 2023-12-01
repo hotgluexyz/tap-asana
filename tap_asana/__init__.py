@@ -5,12 +5,12 @@ import json
 import time
 import math
 import functools
-import asana
+import tap_asana.asana_ as asana_
 import singer
 from singer import utils
 from singer import metadata
 from singer import Transformer
-from tap_asana.asana import Asana
+from tap_asana.asana_ import Asana
 from tap_asana.context import Context
 import tap_asana.streams  # Load stream objects into Context
 
